@@ -6,6 +6,7 @@ return {
     },
     config = function()
       require("quarto").setup({
+        closePreviewOnExit = true,
         lspFeatures = {
           enabled = true,
           languages = { "python", "r", "julia", "bash" },
@@ -14,7 +15,7 @@ return {
         },
         codeRunner = {
           enabled = true,
-          default_method = "molten",
+          never_run = { 'yaml' },
         },
       })
     end,

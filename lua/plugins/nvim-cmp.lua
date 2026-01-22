@@ -21,9 +21,21 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
+
+
+      -- ✅ pas de popup automatique
+      completion = {
+        autocomplete = false,
+      },
+
       mapping = cmp.mapping.preset.insert({
+        -- tu peux toujours ouvrir manuellement
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+
+        -- Entrée valide seulement si tu as sélectionné un item
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+
+        -- Tab = entrer dans le menu / naviguer
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -33,6 +45,7 @@ return {
             fallback()
           end
         end, { "i", "s" }),
+
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -43,6 +56,7 @@ return {
           end
         end, { "i", "s" }),
       }),
+
       sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
@@ -52,4 +66,3 @@ return {
     })
   end,
 }
-

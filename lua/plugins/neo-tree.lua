@@ -15,8 +15,17 @@ return {
       enable_diagnostics = true,
 
       filesystem = {
+        filtered_items = {
+            hide_dotfiles = false,
+            visible = true,
+        },
         follow_current_file = {
           enabled = true,
+        },
+        window = {
+            mappings = {
+              [".."] = "navigate_up", -- même idée que `..`
+            },
         },
         use_libuv_file_watcher = true,
       },

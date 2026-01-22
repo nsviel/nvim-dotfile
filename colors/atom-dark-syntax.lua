@@ -13,18 +13,23 @@ local c = {
   cursor    = "#ffffff",
   selection = "#444444",
 
-  comment   = "#8A8A8A", -- base.less
-  string    = "#A8FF60", -- base.less
-  keyword   = "#96CBFE", -- base.less
-  variable  = "#C6C5FE", -- base.less
-  func      = "#FFD2A7", -- base.less (entity.function)
-  builtin   = "#DAD085", -- css.less (support functions like url/rgb)
-  constant  = "#FF73FD", -- base.less
-  number    = "#FF73FD", -- base.less
+  comment   = "#8A8A8A", 
+  string    = "#A8FF60", 
+  keyword   = "#96CBFE", 
+  variable  = "#C6C5FE", 
+  func      = "#FFD2A7",
+  builtin   = "#DAD085", 
+  constant  = "#FF73FD", 
+  number    = "#FF73FD", 
 
-  error     = "#FD5FF1", -- base.less illegal/deprecated uses this hue
+  error     = "#FD5FF1", 
   line_nr   = "#373b41",
   cursorline= "#282a2e",
+
+  -- Folding
+  fold_bg   = "#202224",  
+  fold_fg   = "#9da1a6", 
+  fold_col  = "#8e9aa5",
 }
 
 -- UI
@@ -86,3 +91,9 @@ vim.api.nvim_set_hl(0, "@variable.parameter", { link = "Identifier" })
 -- booleans / None
 vim.api.nvim_set_hl(0, "@constant.builtin", { link = "Constant" })
 vim.api.nvim_set_hl(0, "@boolean",           { link = "Constant" })
+
+-- Folding
+set(0, "Folded", {fg = c.fg, bg = c.bg,})
+set(0, "FoldColumn", {fg = c.fg, bg = c.bg,})
+set(0, "UfoFoldedFg", { fg = c.fg })
+set(0, "UfoFoldedBg", { bg = c.bg })
